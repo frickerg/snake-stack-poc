@@ -1,0 +1,30 @@
+{
+	"name": "snake-stack-poc",
+	"version": "1.0.0",
+	"description": "Proof of concept for the SNAKE-Stack using Angular, NodeJS, SQLite, knex and Express",
+	"main": "index.js",
+	"scripts": {
+		"start": "node app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/frickerg/snake-stack-poc.git"
+	},
+	"keywords": [
+		"angular",
+		"nodejs",
+		"sqlite",
+		"express",
+		"knex"
+	],
+	"author": "Guillaume Fricker",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/frickerg/snake-stack-poc/issues"
+	},
+	"homepage": "https://github.com/frickerg/snake-stack-poc#readme",
+	"dependencies": {
+		"sqlite3": "^4.0.6"
+	}
+}
