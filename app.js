@@ -22,7 +22,19 @@ db.serialize(() => {
 	})
 });
 
-// close the connection
+let query = 'select ItemID from TBL_Bookshelf limit 3';
+
+db.all(query, [], (err, rows) => {
+	if (err) {
+		throw err;
+	}
+	console.log('\ntesting query:');
+	rows.forEach((row) => {
+		console.log(row.ItemID);
+	});
+});
+
+// close the database connection
 db.close((err) => {
 	if (err) {
 		console.error(err.message);
