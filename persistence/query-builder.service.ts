@@ -1,12 +1,14 @@
-import knex from '../core/knex';
+var connection = require('../core/knex');
 
 export default class QueryBuilderService {
 
-	public execTestQuery(tblName: string, limit: number) {
-		knex.select('*').from(tblName).limit(limit).debug(true).then(rows => {
-			console.log('\ntesting query:');
-			return rows;
-		})
+	public execTestQuery(tblName: string, limit: number): string[] {
+		var result = [];
+		return connection.select('*').from(tblName).limit(limit).then(rows => {
+			rows.forEach((row) => {
+				result.push(row);
+			});
+			return result;
+		});
 	}
-
 }

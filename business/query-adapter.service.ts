@@ -1,14 +1,15 @@
 import QueryBuilderService from '../persistence/query-builder.service';
 
 export default class QueryAdapterService {
-	private _queryBuilder: QueryBuilderService;
+	private queryBuilder: QueryBuilderService;
 
 	constructor() {
-		this._queryBuilder = new QueryBuilderService();
+		this.queryBuilder = new QueryBuilderService();
 	}
 
 	public triggerTestQuery(): string {
-		return JSON.stringify(this._queryBuilder.execTestQuery('TBL_Bookshelf', 3));
+		let result = this.queryBuilder.execTestQuery('TBL_Bookshelf', 3);
+		return JSON.stringify(result);
 	}
 
 }
