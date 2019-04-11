@@ -4,7 +4,6 @@ import * as bodyParser from 'body-parser';
 import routes from '../api';
 
 class App {
-
 	constructor() {
 		this.app = express();
 		this.config();
