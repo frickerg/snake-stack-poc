@@ -12,11 +12,16 @@ class TestQueryRouter {
 	}
 
 	public async routes() {
-		this.router.route('/').get(async function (req: Request, res: Response) {
+		this.router.route('/testquery').get(async function (req: Request, res: Response) {
 			let promise = new Promise((resolve, reject) => {
 				resolve(queryAdapter.triggerTestQuery())
 			});
-			res.send(await promise);
+			res.render('response', {
+				title: req.route.name,
+				request: req.route.path,
+				status: res.statusCode,
+				response: JSON.stringify(await promise)
+			});
 		});
 	}
 }
@@ -24,6 +29,4 @@ class TestQueryRouter {
 const testQueryRouter = new TestQueryRouter();
 testQueryRouter.routes();
 
-const router = testQueryRouter.router;
-
-export default router;
+export default testQueryRouter.router;

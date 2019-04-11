@@ -29,6 +29,7 @@
 	},
 	"homepage": "https://github.com/frickerg/snake-stack-poc#readme",
 	"dependencies": {
+		"ejs": "^2.6.1",
 		"express": "^4.16.4",
 		"knex": "^0.16.3",
 		"sqlite3": "^4.0.6"

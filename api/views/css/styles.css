@@ -1,0 +1,45 @@
+body {
+	font-size: 14px;
+	padding: 20px;
+	font-family: 'Segoe UI', Verdana, Tahoma, Geneva, sans-serif
+}
+
+h1 {
+	color: crimson;
+}
+
+h2 {
+	color: cornflowerblue;
+}
+
+h1,
+h2,
+p,
+a,
+img {
+	margin: 20px;
+}
+
+img {
+	float: left;
+}
+
+p {
+	font-family: 'Courier New', Courier, monospace;
+	padding: 20px;
+	margin-bottom: 32px;
+	background-color: whitesmoke;
+	overflow-wrap: break-word;
+}
+
+a {
+	color: deeppink;
+	text-decoration: none;
+	text-align: right;
+	display: block;
+}
+
+.column {
+	width: 50%;
+	float: left;
+}

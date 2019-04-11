@@ -1,15 +1,45 @@
 import * as express from 'express';
 import { Application, Router, Response, Request } from 'express';
 import TestQueryRouter from './testquery';
+import { NextFunction } from 'connect';
+
+class Error {
+	public message: string;
+	public status: number;
+
+	constructor(message: string) {
+		this.message = message;
+	}
+}
 
 export default function Routes(app: Application) {
 	const router: Router = express.Router();
 
 	app.use('/', router);
-	app.use('/index', (req: Request, res: Response) => {
-		res.status(200).json({
-			message: 'Snake Stack POC'
+	app.use('/api/v1', TestQueryRouter);
+
+	app.use('/api/v1', function (req: Request, res: Response) {
+		res.render('index', {
+			title: 'Snake Stack POC',
 		});
 	});
-	app.use('/api/testquery', TestQueryRouter);
+
+	// catch 404 and forward to error handler
+	app.use(function (req: Request, res: Response, next: NextFunction) {
+		var err = new Error('Not Found');
+		err.status = 404;
+		console.log(err);
+		next(err);
+	});
+
+	// error handler
+	app.use(function (err: Error, req: Request, res: Response, next: NextFunction) {
+		// set locals, only providing error in development
+		res.locals.message = err.message;
+		res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+		// render the error page
+		res.status(err.status || 500);
+		res.render('error');
+	});
 }
