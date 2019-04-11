@@ -7,9 +7,8 @@ export default class QueryAdapterService {
 		this.queryBuilder = new QueryBuilderService();
 	}
 
-	public triggerTestQuery(): string {
-		let result = this.queryBuilder.execTestQuery('TBL_Bookshelf', 3);
-		return JSON.stringify(result);
+	public async triggerTestQuery() {
+		return this.queryBuilder.execTestQuery('TBL_Bookshelf', 3);
 	}
 
 }

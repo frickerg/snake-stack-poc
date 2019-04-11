@@ -12,9 +12,14 @@ class TestQueryRouter {
 		this.routes();
 	}
 
-	public routes() {
+	public async routes() {
+		let promise = new Promise((resolve, reject) => {
+			resolve(queryAdapter.triggerTestQuery())
+		});
+
+		let result = await promise; // wait till the promise resolves
 		this.router.get('/', function (req: Request, res: Response) {
-			res.send(queryAdapter.triggerTestQuery());
+			res.send(result);
 		});
 	}
 }
