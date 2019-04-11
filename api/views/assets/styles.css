@@ -1,0 +1,50 @@
+body {
+	font-size: 14px;
+	padding: 20px;
+	font-family: 'Segoe UI', Verdana, Tahoma, Geneva, sans-serif
+}
+
+h1 {
+	color: crimson;
+	display: flex;
+}
+
+h2 {
+	color: cornflowerblue;
+}
+
+h1,
+h2,
+p,
+a {
+	margin: 20px;
+}
+
+h1 img {
+	height: 42px;
+}
+
+h1 span {
+	line-height: 42px;
+	padding-left: 22px;
+}
+
+p {
+	font-family: 'Courier New', Courier, monospace;
+	padding: 20px;
+	margin-bottom: 32px;
+	background-color: whitesmoke;
+	overflow-wrap: break-word;
+}
+
+a {
+	color: deeppink;
+	text-decoration: none;
+	text-align: right;
+	display: block;
+}
+
+.column {
+	width: 50%;
+	float: left;
+}

@@ -1,43 +1,25 @@
-const sqlite3 = require('sqlite3').verbose();
 const table_names = ['TBL_Bookshelf', 'TBL_Inventory'];
 
-// open snakedb
-let db = new sqlite3.Database('./resources/snakedb.sqlite3', sqlite3.OPEN_READONLY, (err) => {
-	if (err) {
-		console.error(err.message);
+const knex = require('knex')({
+	client: 'sqlite3',
+	useNullAsDefault: false,
+	connection: {
+		filename: "./resources/snakedb.sqlite3",
 	}
-	console.log('connection to snakedb successful');
 });
 
-// serialize snakedb tables
-db.serialize(() => {
-	table_names.forEach(tbl => {
-		console.log(tbl);
-		db.each('PRAGMA table_info(' + tbl + ')', (err, col) => {
-			if (err) {
-				console.error(err.message);
-			}
-			console.log(col);
-		});
-	})
+// display column names
+table_names.forEach(tableName => {
+	knex(tableName).columnInfo().then(columns => {
+		console.log(columns);
+	});
 });
 
-let query = 'select ItemID from TBL_Bookshelf limit 3';
-
-db.all(query, [], (err, rows) => {
-	if (err) {
-		throw err;
-	}
+// testing query
+knex.select('*').from('TBL_Bookshelf').limit(3).debug().then(rows => {
 	console.log('\ntesting query:');
 	rows.forEach((row) => {
 		console.log(row.ItemID);
 	});
-});
-
-// close the database connection
-db.close((err) => {
-	if (err) {
-		console.error(err.message);
-	}
-	console.log('Connection closed');
+	knex.destroy();
 });
