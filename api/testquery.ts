@@ -12,7 +12,7 @@ class TestQueryRouter {
 	}
 
 	public async routes() {
-		this.router.route('/testquery').get(async function (req: Request, res: Response) {
+		this.router.route('/').get(async function (req: Request, res: Response) {
 			let promise = new Promise((resolve, reject) => {
 				resolve(queryAdapter.triggerTestQuery())
 			});

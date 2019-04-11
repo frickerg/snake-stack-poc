@@ -15,17 +15,21 @@ class Error {
 export default function Routes(app: Application) {
 	const router: Router = express.Router();
 
+	// setup api endpoints
 	app.use('/', router);
-	app.use('/api/v1', TestQueryRouter);
+	app.use('/api/v1/testquery', TestQueryRouter);
 
-	app.use('/api/v1', function (req: Request, res: Response) {
-		res.render('index', {
-			title: 'Snake Stack POC',
-		});
-	});
+	// setup api index page
+	app.use(['/$', '/api/v1$'],
+		function (req: Request, res: Response) {
+			res.render('index', {
+				title: 'Snake Stack POC',
+			});
+		}
+	);
 
 	// catch 404 and forward to error handler
-	app.use(function (req: Request, res: Response, next: NextFunction) {
+	app.use('/', function (req: Request, res: Response, next: NextFunction) {
 		var err = new Error('Not Found');
 		err.status = 404;
 		console.log(err);
