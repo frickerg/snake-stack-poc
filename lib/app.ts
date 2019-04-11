@@ -18,7 +18,7 @@ class App {
 		// view engine setup
 		this.app.set('view engine', 'ejs');
 		this.app.set('views', path.join(__dirname, '../', 'api', 'views'));
-		this.app.use(express.static(path.join(__dirname, '../', 'api', 'views', 'css')));
+		this.app.use(express.static(path.join(__dirname, '../', 'api', 'views', 'assets')));
 
 		this.app.use(bodyParser.json());
 		this.app.use(bodyParser.urlencoded({ extended: false }));

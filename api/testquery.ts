@@ -16,12 +16,8 @@ class TestQueryRouter {
 			let promise = new Promise((resolve, reject) => {
 				resolve(queryAdapter.triggerTestQuery())
 			});
-			res.render('response', {
-				title: req.route.name,
-				request: req.route.path,
-				status: res.statusCode,
-				response: JSON.stringify(await promise)
-			});
+
+			res.send(await promise);
 		});
 	}
 }
