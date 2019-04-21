@@ -1,7 +1,6 @@
 import * as express from 'express';
-import { Application, Router, Response, Request } from 'express';
+import { Application, Router, Response, Request, NextFunction } from 'express';
 import TestQueryRouter from './testquery';
-import { NextFunction } from 'connect';
 
 class Error {
 	public message: string;
